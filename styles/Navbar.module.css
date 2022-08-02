@@ -1,0 +1,115 @@
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--green-color);
+  padding: 1rem;
+  height: 60px;
+}
+
+.brand {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 40%;
+  margin: 0 0 0 2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.brand span {
+  cursor: pointer;
+}
+
+.brand svg {
+  position: relative;
+  top: 3px;
+}
+
+.links {
+  width: fit-content;
+  margin: 0 1rem 0 0;
+}
+
+.links ul {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.links ul li {
+  margin: 0 1rem;
+  transition: .5s linear;
+}
+
+.links li:hover {
+  color: var(--primary-color);
+  transition: .5s linear;
+}
+
+.btn {
+  margin: 0 2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: none;
+}
+
+@media screen and (max-width: 786px) {
+  .navbar {
+    width: 100%;
+    justify-content: space-between;
+
+  }
+
+  .links {
+    position: absolute;
+    top: 3.8rem;
+    left: 0;
+    display: none;
+    background-color: var(--green-color);
+    width: 100%;
+    margin: 0;
+    padding: 1rem 0;
+    animation: fadeIn 1s linear;
+  }
+
+  .active {
+    display: block;
+  }
+
+  .btn {
+    display: block;
+    height: 1em;
+  }
+
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    top: 1.5rem;
+  }
+
+  25% {
+    opacity: 0.3;
+    top: 2rem;
+  }
+
+  50% {
+    opacity: 0.6;
+    top: 2.5rem;
+  }
+
+  75% {
+    opacity: 0.8;
+    top: 3rem;
+  }
+
+  100% {
+    opacity: 1;
+    top: 3.8rem;
+  }
+}

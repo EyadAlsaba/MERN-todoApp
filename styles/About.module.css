@@ -1,0 +1,24 @@
+.section {
+  margin: 1rem;
+  text-align: center;
+  font-size: 1.1rem;
+  letter-spacing: 1.5px;
+}
+
+.article {
+  margin: 2rem 1rem;
+}
+
+.header {
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.para {
+  opacity: 0.8;
+}
+
+.hr {
+  margin: 2rem 0;
+}

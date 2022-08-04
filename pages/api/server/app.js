@@ -1,25 +1,38 @@
-import mongoose from 'mongoose';
 import connectMongoose from '@/lib/connectMongo.js'
-import { getSession } from 'next-auth/react';
 import { ClientProfile, ClientProject } from '@/database/userModel.js';
+import { getSession } from 'next-auth/react';
 
-export default async function handler(req, res) {
+/* 
+  # REQUESTING THIS ROUTE WITH GET REQ SEND US BACK ALL THE CLIENTS PROFILES
+*/
+
+export default async function clientsRecords(req, res) {
+
   try {
-    const user = await getSession({ req });
     const connected = await connectMongoose();
-    const client = ClientProfile.create({ client_email: `${req.user.email}`, client_lists: [{}] });
-    res.status(200).json({ client })
-  } catch (error) {
-    res.json({ error });
-  }
-}
+    const session = await getSession({ req });
 
-/**
- *     const test = ClientProfile.find({}, function (err, docs) {
+    const clients = ClientProfile.find({}, function (error, docs) {
+
       if (docs) {
         res.json(docs)
       } else {
-        res.json(err)
+        res.json({ error, msg: `no docs in ${__filename}` })
       }
     })
- */
+
+  } catch (error) {
+    res.json({ error: `${__filename}` });
+  }
+}
+
+/*
+        const { email } = session.user;
+        console.log('docs =>', docs)
+        docs.forEach((doc) => {
+          if (doc['client_email'] == email) {
+             ClientProfile.create({ client_email: `${email}`, client_lists: [SAMPLE_LIST] });
+          }
+        })
+
+*/

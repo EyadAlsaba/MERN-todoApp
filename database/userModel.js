@@ -1,11 +1,6 @@
 const mongoose = require('mongoose')
 
 const clientSchema = new mongoose.Schema({
-  // client_id: {
-  //   type: String,
-  //   required: true,
-  //   unique: true
-  // },
   client_email: {
     type: String,
     required: true,
@@ -18,7 +13,8 @@ const clientSchema = new mongoose.Schema({
 const listSchema = new mongoose.Schema({
   list_title: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   tasks: [Object]
 });

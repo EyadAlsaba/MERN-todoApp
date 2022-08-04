@@ -6,7 +6,8 @@
       "@/database/*": ["database/*"],
       "@/lib/*": ["lib/*"],
       "@/server/*": ["pages/api/server/*"],
-      "@/styles/*": ["styles/*"]
+      "@/styles/*": ["styles/*"],
+      "@/context": ["context/*"]
     }
   }
 }

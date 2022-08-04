@@ -1,10 +1,12 @@
 import Head from 'next/head'
 import Link from 'next/link';
-import { useSession } from "next-auth/react"
+import { useSession, getSession } from "next-auth/react"
 import Welcome from '@/components/welcome.js';
 
-export default function Home() {
+
+export default function Home({ clientsData }) {
   const { data: session } = useSession();
+  console.log(clientsData)
   return (
     <>
       <Head>
@@ -24,14 +26,36 @@ export default function Home() {
 }
 
 export async function getServerSideProps(context) {
+
+  const session = await getSession(context);
   const res = await fetch('http://localhost:3000/api/server/app');
-  const resData = await res.json();
-  if (resData) {
-    return {
-      props: {
-        resData
+  const clientsData = await res.json();
+
+  if (clientsData) {
+
+    if (session) {
+      const isClientExist = clientsData.some(client => client['client_email'] === session.user.email);
+      if (!isClientExist) {
+
+        const newClient = await fetch('http://localhost:3000/api/server/add', {
+          body: JSON.stringify({
+            'email': session.user.email
+          }),
+          headers: {
+            "Content-Type": "application/json"
+          },
+          method: 'POST'
+        })
+        await newClient.json();
       }
     }
+
+    return {
+      props: {
+        clientsData,
+      }
+    }
+
   } else {
     console.error('error fetching data')
   }

@@ -1,6 +1,6 @@
 import '@/styles/globals.css'
-import { HandlersProvider } from "../context/clientHandlers.js"
 import Layout from '@/components/layout'
+import { HandlersProvider } from "../context/clientHandlers.js"
 import { SessionProvider } from 'next-auth/react'
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {

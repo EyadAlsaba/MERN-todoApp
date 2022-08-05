@@ -7,7 +7,6 @@ import { getSession } from 'next-auth/react';
 */
 
 export default async function clientsRecords(req, res) {
-
   try {
     const connected = await connectMongoose();
     const session = await getSession({ req });
@@ -15,24 +14,34 @@ export default async function clientsRecords(req, res) {
     const clients = ClientProfile.find({}, function (error, docs) {
 
       if (docs) {
-        res.json(docs)
+        res.status(200).json(docs);
       } else {
-        res.json({ error, msg: `no docs in ${__filename}` })
+        res.status(500).send({ error, msg: `no docs in ${__filename}` })
       }
     })
 
   } catch (error) {
-    res.json({ error: `${__filename}` });
+    res.status(500).send({ error: `${__filename}` });
   }
+
 }
 
-/*
-        const { email } = session.user;
-        console.log('docs =>', docs)
-        docs.forEach((doc) => {
-          if (doc['client_email'] == email) {
-             ClientProfile.create({ client_email: `${email}`, client_lists: [SAMPLE_LIST] });
-          }
-        })
+/**
+  try {
+    const connected = await connectMongoose();
+    const session = await getSession({ req });
+
+    const clients = ClientProfile.find({}, function (error, docs) {
+
+      if (docs) {
+        res.status(200).json(docs);
+      } else {
+        res.status(500).send({ error, msg: `no docs in ${__filename}` })
+      }
+    })
+
+  } catch (error) {
+    res.status(500).send({ error: `${__filename}` });
+  }
 
 */

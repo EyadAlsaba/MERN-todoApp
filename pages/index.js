@@ -6,7 +6,7 @@ import Welcome from '@/components/welcome.js';
 
 export default function Home({ clientsData }) {
   const { data: session } = useSession();
-  console.log(clientsData)
+  // console.log(clientsData)
   return (
     <>
       <Head>
@@ -28,8 +28,8 @@ export default function Home({ clientsData }) {
 export async function getServerSideProps(context) {
 
   const session = await getSession(context);
-  const res = await fetch('http://localhost:3000/api/server/app');
-  const clientsData = await res.json();
+  const req = await fetch('http://localhost:3000/api/server/app');
+  const clientsData = await req.json();
 
   if (clientsData) {
 

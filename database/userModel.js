@@ -3,13 +3,13 @@ const mongoose = require('mongoose')
 const clientSchema = new mongoose.Schema({
   client_email: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   client_lists: [Object]
 });
 
 // for adding new list into client lists
+// A unique index ensures that the indexed fields do not store duplicate values | error 11000
 const listSchema = new mongoose.Schema({
   list_title: {
     type: String,

@@ -2,7 +2,7 @@ import connectMongoose from '@/lib/connectMongo';
 import { ClientProfile } from '@/database/userModel.js';
 import { getSession } from 'next-auth/react';
 
-// # WHEN I MAKE A POST REQUEST TO THIS FILE, I POST A NEW CLIENT INSTANCE IN THE DATABASE
+// # WHEN I MAKE A POST REQUEST TO THIS ROUTE, I POST A NEW CLIENT INSTANCE IN THE DATABASE
 export default async function addClient(req, res) {
 
   const SAMPLE_LIST = {
@@ -30,11 +30,11 @@ export default async function addClient(req, res) {
       }
 
     } catch (error) {
-      res.json(error)
+      res.send(error)
     }
 
   } else {
-    res.status(401).json({ Status: '401 Unauthorized', Message: 'Not Authenticated' })
+    res.status(500).send({ Status: '500 request is not POST' })
   }
 
   res.end();

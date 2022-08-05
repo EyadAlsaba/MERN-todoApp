@@ -10,15 +10,18 @@ const HandlersProvider = ({ children }) => {
   useEffect(() => {
     return async () => {
       const session = await getSession();
-      const req = await fetch('http://localhost:3000/api/server/app');
-      const reqData = await req.json();
-      const clientInfo = reqData.filter(client => client['client_email'] === session.user.email)
+      if (session) {
+        const req = await fetch('http://localhost:3000/api/server/app');
+        const reqData = await req.json();
+        const clientInfo = reqData.filter(client => client['client_email'] === session.user.email)
 
-      if (clientInfo && session) {
-        setClient(...clientInfo)
-      } else {
-        setClient({ msg: 'could not fetch the data for the particular client' })
+        if (clientInfo) {
+          setClient(...clientInfo)
+        } else {
+          setClient({ msg: 'could not fetch the data for the particular client' })
+        }
       }
+
     }
   }, [])
 

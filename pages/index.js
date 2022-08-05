@@ -18,7 +18,7 @@ export default function Home({ clientsData }) {
         session ? <Welcome user={session.user} /> :
           <section style={{ textAlign: 'center', marginTop: '5rem' }}>
             <h1>You must be logged in</h1>
-            <Link href='/api/auth/signin'>Log in</Link>
+            <Link href='/auth/signin'>Log in</Link>
           </section>
       }
     </>

@@ -1,5 +1,4 @@
-import { GiHamburgerMenu } from 'react-icons/gi'
-import { VscChromeClose } from 'react-icons/vsc'
+import { VscChromeClose, VscMenu } from 'react-icons/vsc'
 import { BsCheck2Circle } from 'react-icons/bs'
 import styles from '@/styles/Navbar.module.css'
 import Link from 'next/link'
@@ -28,7 +27,7 @@ function Navbar() {
       </div>
       <button className={styles.btn} type='button' onClick={() => toggle()}>
         {
-          open ? <VscChromeClose /> : <GiHamburgerMenu />
+          open ? <VscChromeClose /> : <VscMenu />
         }
       </button>
       <div className={styles.links} id='links'>

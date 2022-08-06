@@ -28,6 +28,10 @@ body {
   height: 100%;
 }
 
+main {
+  width: 100%;
+}
+
 li,
 a {
   color: inherit;
@@ -42,76 +46,33 @@ button {
   cursor: pointer;
 }
 
-.signup,
-.login {
-  position: absolute;
-  left: 30%;
-  top: 35%;
-  min-width: 40%;
-  height: fit-content;
-  font-size: 1.3rem;
-  padding: 2rem;
-  background: var(--light-green);
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.signup button,
-.login button {
-  margin: 1rem auto;
-  font-size: 1.5rem;
-  text-transform: capitalize;
-  transition: .3s linear;
-  font-weight: bold;
+.homeSections {
+  margin: 4rem;
+  text-align: center;
   letter-spacing: 1px;
 }
 
-.signup button:hover,
-.login button:hover {
-  color: var(--primary-color);
-  transition: .3s linear;
+.homeSections h1 {
+  padding: 1rem 0;
+  letter-spacing: 1.8px;
 }
 
-.signup label,
-.login label {
-  letter-spacing: 1px;
+.homeSections p {
+  font-size: 1.2rem;
+  padding: .3rem 0;
 }
 
-.signup input,
-.login input {
-  border: none;
-  padding: .5rem 1rem;
-  border-radius: 5px;
-  margin: .5rem auto;
-  background-color: var(--primary-color);
-  color: var(--light-beige);
+.homeSections a {
   text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 1px;
-  width: 50%;
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-size: 1.5rem;
+  color: var(--green-color);
 }
 
-.signup input:focus-visible,
-.login input:focus-visible {
-  outline: none;
-}
-
-@media (max-width:992px) {
-
-  .signup,
-  .login {
-    position: absolute;
-    width: 90%;
-    height: 50%;
-    left: 5%;
-    top: 25%;
-  }
-
-  .signup input,
-  .login input {
-    width: 95%;
+@media screen and (max-width:786px) {
+  .homeSections {
+    margin: 2rem;
+    font-size: .8rem;
   }
 }

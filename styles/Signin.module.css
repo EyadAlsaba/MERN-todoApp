@@ -1,3 +1,58 @@
 .sectionContainer {
-  margin: 5rem;
+  position: absolute;
+  left: 30%;
+  top: 30%;
+  min-width: 40%;
+  min-height: 40%;
+  padding: 1rem;
+  background: var(--light-green);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 var(--green-color), 0 0 20px 0 var(--light-green);
+}
+
+.provider {
+  width: 100%;
+  text-align: center;
+  margin: .5rem 0;
+}
+
+.errorMsg {
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.provider svg {
+  position: relative;
+  top: 3px;
+  margin: 0 .2rem;
+}
+
+.btn {
+  font-size: 1.5rem;
+  margin: 1rem auto;
+  text-transform: capitalize;
+  transition: .3s linear;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.btn:hover {
+  color: var(--primary-color);
+  transition: .3s linear;
+}
+
+@media (max-width:786px) {
+
+  .sectionContainer {
+    position: absolute;
+    width: 90%;
+    height: 50%;
+    left: 5%;
+    top: 25%;
+  }
 }

@@ -3,10 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: auto 0;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   letter-spacing: 1.2px;
-  margin: 5rem 0 0 0;
 }
 
 .name {

@@ -14,10 +14,19 @@ export default function Home({ clientsData }) {
         <meta name="todo app" content="mange your projects simply" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <section className='homeSections'>
+        <h1>
+          Organize your<br />
+          projects and life, finally.
+        </h1>
+        <p>Check is task manager you can trust for life</p>
+        <p>Become focused, organized, and calm with Check. The world’s #1 task manager and to-do list app.</p>
+      </section>
       {
         session ? <Welcome user={session.user} /> :
-          <section style={{ textAlign: 'center', marginTop: '5rem' }}>
-            <h1>You must be logged in</h1>
+          <section className='homeSections'>
+            <h1>you are not logged in</h1>
             <Link href='/auth/signin'>Log in</Link>
           </section>
       }

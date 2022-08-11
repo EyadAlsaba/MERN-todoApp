@@ -8,46 +8,80 @@ const clientSchema = new mongoose.Schema({
   client_lists: [Object]
 });
 
-// for adding new list into client lists
-// A unique index ensures that the indexed fields do not store duplicate values | error 11000
 const listSchema = new mongoose.Schema({
+  clientId: String,
   list_title: {
     type: String,
     required: true,
-    unique: true
+    trim: true,
+    lowercase: true
   },
   tasks: [Object]
 });
 
-const ClientProfile = mongoose.models.ClientProfile || mongoose.model('ClientProfile', clientSchema);
-const ClientProject = mongoose.models.ClientProject || mongoose.model('ClientProject', listSchema);
+const projectSchema = new mongoose.Schema({
+  clientId: String,
+  ownedBy: String,
+  title: {
+    type: String,
+    trim: true,
+    lowercase: true
+  },
+  note: { type: String, default: " " },
+  date: { type: String, default: " " },
+  priority: { type: String, default: " " },
+  completed: { type: Boolean, default: false }
+});
 
-module.exports = { ClientProfile, ClientProject }
+const ClientProfile = mongoose.models.ClientProfile || mongoose.model('ClientProfile', clientSchema);
+const ClientLists = mongoose.models.ClientLists || mongoose.model('ClientLists', listSchema);
+const ClientProject = mongoose.models.ClientProject || mongoose.model('ClientProject', projectSchema);
+
+
+module.exports = { ClientProfile, ClientLists, ClientProject }
 
 /*
 
-[
   {
-    client_id: session[user_id],
-    client_email: session[user_email],
-    client_lists:[
-      { 
-        list_title:`sample A`,
-        tasks:[{
-          title: `test`,
-          note: `study || default empty string`,
-          date: `2022-08-31 || default empty string`,
-          priority: `(low-med-high) || default empty string`
-        }]
+    "_id": "62ea27f0a43e7039eax5421",
+    "client_email": "example@google.com",
+    "client_lists": [
+      {
+        "clientId": "example@google.com",
+        "list_title": "sample list",
+        "tasks": [
+          {
+            "clientId": "example@google.com",
+            "ownedBy":"sample list"
+            "title": "example",
+            "note": "",
+            "date": "",
+            "priority": "",
+            "completed":false
+          }
+        ]
       }
     ]
   }
-]
-
-  {
-    "client_id":"62e42c83d052af6279e48949",
-    "client_email":"elias.saab.90@gmail.com",
-    "client_lists": [{}]
-  }
-
+ ------------------------------
+   const clientSchema = new mongoose.Schema({
+    client_email: {
+      type: String,
+      required: true
+    },
+    client_lists: [{
+      listId: new mongoose.Types.ObjectId,
+      list_title: {
+        type: String,
+        required: true
+      },
+      tasks: [{
+        title: { type: String, required: true, unique: true },
+        note: String,
+        date: String,
+        priority: String,
+        completed: Boolean
+      }]
+    }]
+  });
 */

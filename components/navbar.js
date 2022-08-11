@@ -33,7 +33,7 @@ function Navbar() {
       <div className={styles.links} id='links'>
         <ul>
           <li onClick={() => toggle()}>
-            <Link href='/projects'>projects</Link></li>
+            <Link href='/lists'>projects</Link></li>
           <li onClick={() => toggle()}>
             <Link href='/about'>about</Link></li>
           <li onClick={() => {

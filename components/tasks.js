@@ -1,18 +1,15 @@
 export default function Tasks({ list }) {
+  // console.log(list)
 
-  console.log(list)
   return (
     <>
-      <h3>Tasks</h3>
-      {
-        list && list.map((task, index) => {
-          return (
-            <div key={index}>
-              <title>{task['list_title']}</title>
-            </div>
-          )
-        })
-      }
+      <div className="task">
+        <h3>title: {list.title}</h3>
+        <p>note: {list.note ? list.note : 'not specified'}</p>
+        <p>date: {list.date ? list.date : 'not specified'}</p>
+        <p>priority: {list.priority ? list.priority : 'not specified'}</p>
+        <p className={list.priority ? `${list.priority}` : null}>{" "}</p>
+      </div>
     </>
   )
 }

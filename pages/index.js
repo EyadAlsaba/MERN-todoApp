@@ -4,9 +4,8 @@ import { useSession, getSession } from "next-auth/react"
 import Welcome from '@/components/welcome.js';
 
 
-export default function Home({ clientsData }) {
+export default function Home() {
   const { data: session } = useSession();
-  // console.log(clientsData)
   return (
     <>
       <Head>
@@ -46,7 +45,7 @@ export async function getServerSideProps(context) {
       const isClientExist = clientsData.some(client => client['client_email'] === session.user.email);
       if (!isClientExist) {
 
-        const newClient = await fetch('http://localhost:3000/api/server/add', {
+        const newClient = await fetch('http://localhost:3000/api/server/createInstance', {
           body: JSON.stringify({
             'email': session.user.email
           }),

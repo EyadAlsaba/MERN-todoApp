@@ -1,0 +1,24 @@
+.delForm {
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 .8rem;
+}
+
+.delBtn {
+  font-size: 1.3rem;
+  color: var(--danger);
+}
+
+@media (max-width:786px) {
+  .delForm {
+    height: 25%;
+    background-color: transparent;
+    margin: 0.3rem;
+  }
+
+  .delBtn {
+    font-size: 1rem;
+  }
+}

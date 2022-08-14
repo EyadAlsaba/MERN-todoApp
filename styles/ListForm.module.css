@@ -1,0 +1,86 @@
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 20%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modalContent {
+  border-radius: 5px;
+  background-color: var(--light-green);
+  color: inherit;
+  margin: auto;
+  padding: 2rem 1rem;
+  width: 35%;
+  box-shadow: 0 4px 8px 0 var(--green-color), 0 0 8px 0 var(--light-green);
+}
+
+.formContent {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+.formContent input {
+  border: none;
+  border-radius: 5px;
+  padding: .4rem;
+}
+
+.formContent input[name='list_title'] {
+  width: 70%;
+}
+
+.formContent input:focus-visible {
+  outline: none;
+}
+
+
+.formContent label {
+  margin: 0 .2rem;
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+}
+
+@media (max-width:1020px) {
+  .modal {
+    padding-top: 35%;
+  }
+
+  .modalContent {
+    width: 50%;
+  }
+
+  .formContent input[name='list_title'] {
+    width: 50%;
+  }
+}
+
+@media (max-width:786px) {
+  .modal {
+    padding-top: 75%;
+  }
+
+  .modalContent {
+    height: 35%;
+    width: 80%;
+  }
+
+  .formContent {
+    flex-direction: column;
+    height: 100%
+  }
+
+  .formContent input[name='list_title'] {
+    width: 80%;
+    margin: .5rem 0;
+  }
+}

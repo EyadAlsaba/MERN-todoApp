@@ -45,7 +45,7 @@ export async function getServerSideProps(context) {
       const isClientExist = clientsData.some(client => client['client_email'] === session.user.email);
       if (!isClientExist) {
 
-        const newClient = await fetch('http://localhost:3000/api/server/createInstance', {
+        const newClient = await fetch('http://localhost:3000/api/server/clientInstance', {
           body: JSON.stringify({
             'email': session.user.email
           }),

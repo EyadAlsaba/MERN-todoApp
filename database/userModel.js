@@ -33,6 +33,20 @@ const projectSchema = new mongoose.Schema({
   completed: { type: Boolean, default: false }
 });
 
+// errors middleware handlers
+
+/*
+listSchema.post('save', function (error, doc, next) {
+  if (error.code === 11000) {
+    console.log(error, doc)
+    next(new Error('This title is exists,pls choose something different'));
+  } else {
+    next();
+  }
+});
+*/
+
+// Models
 const ClientProfile = mongoose.models.ClientProfile || mongoose.model('ClientProfile', clientSchema);
 const ClientLists = mongoose.models.ClientLists || mongoose.model('ClientLists', listSchema);
 const ClientProject = mongoose.models.ClientProject || mongoose.model('ClientProject', projectSchema);

@@ -8,6 +8,12 @@ export default async function handler(req, res) {
     const newList = await ClientLists.create({ clientId, list_title })
     res.status(200).redirect('/lists')
   } catch (error) {
-    res.status(500).json({ ...error, msg: 'failed add new list', __filename })
+    if (error.name === 'MongoServerError' && error.code === 11000) {
+      return res.status(400).json({
+        success: false,
+        msg: 'Pls choose unique name to create new list'
+      })
+    }
+    res.status(500).json({ ...error, __filename })
   }
 }

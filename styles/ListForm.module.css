@@ -50,6 +50,13 @@
   letter-spacing: 1.5px;
 }
 
+.errMsg {
+  text-align: center;
+  margin: 1rem 0 0 0;
+  color: var(--danger);
+  text-transform: uppercase;
+}
+
 @media (max-width:1020px) {
   .modal {
     padding-top: 35%;
@@ -70,7 +77,7 @@
   }
 
   .modalContent {
-    height: 35%;
+    height: fit-content;
     width: 80%;
   }
 

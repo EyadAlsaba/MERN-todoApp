@@ -15,7 +15,6 @@ export default async function findList(req, res) {
     })
 
   } catch (error) {
-    res.status(500).send({ error: `${__filename}` });
+    res.status(500).json({ ...error, msg: `error occur in ${__filename}` });
   }
-
 }

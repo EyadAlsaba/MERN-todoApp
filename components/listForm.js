@@ -18,3 +18,31 @@ export default function ListForm({ clientId }) {
     </>
   )
 };
+
+/*
+  const [title, setTitle] = useState('');
+  const [failed, setFailed] = useState(false);
+
+  const submitForm = async (e) => {
+    const option = {
+      method: 'POST',
+      body: JSON.stringify({
+        clientId,
+        list_title: title
+      }),
+      headers: {
+        'content-Type': 'application/json'
+      }
+    };
+
+    const response = await fetch('api/server/addList', option);
+    await response.json();
+
+    if (!response.ok) {
+      e.preventDefault();
+      setFailed(true);
+    } else {
+      setFailed(false);
+    }
+  };
+*/

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { AiOutlineDelete } from 'react-icons/ai'
-import Styles from '@/styles/listDelForm.module.css'
+import Styles from '@/styles/Lists.module.css'
 
 
 export default function DeleteList({ list }) {
@@ -21,12 +21,15 @@ export default function DeleteList({ list }) {
 
   return (
     list.list_title !== 'sample' ?
-      <form onSubmit={handleSubmit} className={Styles.delForm}>
-        <input type='checkBox' value={list._id} onChange={() => setChecked(!checked)} checked={checked} />
-        {
-          checked ? <button type="submit" className={Styles.delBtn}><AiOutlineDelete /></button> : null
-        }
-      </form>
+      <>
+        <form onSubmit={handleSubmit} className={Styles.delForm}>
+          <input type='checkBox' value={list._id} onChange={() => setChecked(!checked)} checked={checked} />
+          {
+            checked ? <button type="submit" className={Styles.delBtn}><AiOutlineDelete /></button> : null
+          }
+        </form>
+
+      </>
       :
       null
   )

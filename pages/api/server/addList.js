@@ -9,10 +9,7 @@ export default async function handler(req, res) {
     res.status(200).redirect('/lists')
   } catch (error) {
     if (error.name === 'MongoServerError' && error.code === 11000) {
-      return res.status(400).json({
-        success: false,
-        msg: 'Pls choose unique name to create new list'
-      })
+      return res.status(400).json({ success: false })
     }
     res.status(500).json({ ...error, __filename })
   }

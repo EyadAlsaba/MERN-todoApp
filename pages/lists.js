@@ -61,7 +61,7 @@ export default function Projects({ clientLists }) {
               return (
                 <div key={index} className={Styles.div}>
 
-                  <Link href={`/${list.list_title}`}>
+                  <Link href={`project/${list.list_title}`}>
                     <a className={Styles.listTitle}>
                       {list['list_title']}
                     </a>
@@ -80,7 +80,7 @@ export default function Projects({ clientLists }) {
             <div className={Styles.modalContent}>
               <form onSubmit={submitForm} className={Styles.formContent}>
                 <label>list title</label>
-                <input onChange={(e) => setTitle(e.target.value)} value={title} type='text' placeholder='e.g. events' required />
+                <input onChange={(e) => setTitle(e.target.value)} value={title} type='text' placeholder='e.g. events' required autoFocus />
                 <button type="submit" className={Styles.formBtn}>add</button>
               </form>
               {

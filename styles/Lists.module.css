@@ -1,7 +1,7 @@
 .section {
   margin-top: 5rem;
   display: grid;
-  grid-template-columns: repeat(3, 33.33vw);
+  grid-template-columns: repeat(3, 33.33%);
   grid-row-gap: 4rem;
   justify-items: center;
   align-items: center;

@@ -30,6 +30,7 @@ body {
 
 main {
   width: 100%;
+  margin-top: 3rem;
 }
 
 li,
@@ -70,41 +71,11 @@ button {
   color: var(--green-color);
 }
 
-/* tasks styles */
-.task-con {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  margin: 1rem;
-  font-size: 1.2rem;
-  text-transform: capitalize;
-  letter-spacing: 2px;
-}
-
-.task {
-  margin: 1rem;
-  padding: 1rem;
-  border: 1px solid var(--light-beige);
-  border-radius: 5px;
-}
-
-.task>* {
-  margin: .5rem 0;
-}
-
-.low {
-  color: skyblue;
-  background-color: skyblue;
-}
-
-.medium {
-  color: orange;
-  background-color: orange;
-}
-
-.heigh {
-  color: var(--danger);
-  background-color: var(--danger);
+@media (min-width:1200px) {
+  main {
+    width: 75vw;
+    margin: 3rem auto 0 auto;
+  }
 }
 
 @media screen and (max-width:786px) {

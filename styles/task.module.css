@@ -1,0 +1,171 @@
+.container {
+  margin: 1rem;
+  padding: 1rem;
+  border: 2px solid var(--light-beige);
+  border-radius: 3px;
+  box-shadow: 0 8px 16px 0 rgb(0, 0, 0, 0.2);
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+}
+
+.taskHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrowBtn,
+.arrowBtn svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.taskBody {
+  display: none;
+  position: relative;
+}
+
+.formContainer {
+  margin: .5rem 0 0 0;
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 8em;
+  margin: 1rem 0;
+}
+
+.notes {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  height: 100%;
+}
+
+.notes textarea {
+  border: 0;
+  border-radius: 3px;
+  background-color: var(--light-beige);
+  color: var(--primary-color);
+  text-transform: capitalize;
+  height: 100%;
+  padding: 5px;
+  resize: none;
+}
+
+.notes textarea:focus {
+  outline-color: var(--green-color);
+}
+
+.notes textarea::placeholder {
+  color: var(--light-green);
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+  width: 33.33%;
+  height: 100%;
+}
+
+.date input,
+.date select {
+  border: 0;
+  border-radius: 3px;
+  margin: 0 0;
+  padding: .8rem .2rem;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  background-color: var(--light-beige);
+}
+
+.date input:focus,
+.date select:focus {
+  outline-color: var(--green-color);
+}
+
+.controller {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.controller button {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background-color: var(--green-color);
+  border: 1px solid var(--light-beige);
+  padding: .3rem;
+  border-radius: 3px;
+  transition: .3s linear;
+}
+
+.controller button:hover {
+  background-color: var(--light-beige);
+  color: var(--primary-color);
+  transition: .3s linear;
+}
+
+.controller svg {
+  color: var(--danger);
+}
+
+.show {
+  display: block;
+}
+
+
+.low {
+  width: 1rem;
+  height: 100%;
+  color: skyblue;
+  background-color: skyblue;
+}
+
+.medium {
+  width: 1rem;
+  height: 100%;
+  color: orange;
+  background-color: orange;
+}
+
+.heigh {
+  width: 1rem;
+  height: 100%;
+  color: var(--danger);
+  background-color: var(--danger);
+}
+
+@media (max-width:786px) {
+  .container {
+    margin: .5rem;
+    padding: .5rem;
+    font-size: 1rem;
+  }
+
+  .wrapper {
+    flex-direction: column;
+    justify-content: flex-start;
+    height: fit-content;
+  }
+
+  .notes textarea {
+    resize: vertical;
+  }
+
+  .notes,
+  .date {
+    width: 100%;
+  }
+
+  .date input,
+  .date select,
+  .controller button {
+    font-size: 1rem;
+  }
+}

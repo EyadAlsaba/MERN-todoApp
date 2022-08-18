@@ -14,7 +14,8 @@ const listSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    lowercase: true
+    lowercase: true,
+    unique: true
   },
   tasks: [Object]
 });
@@ -27,9 +28,9 @@ const projectSchema = new mongoose.Schema({
     trim: true,
     lowercase: true
   },
-  note: { type: String, default: " " },
-  date: { type: String, default: " " },
-  priority: { type: String, default: " " },
+  note: { type: String, default: "" },
+  date: { type: String, default: "" },
+  priority: { type: String, default: "" },
   completed: { type: Boolean, default: false }
 });
 

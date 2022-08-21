@@ -65,6 +65,10 @@ export async function getServerSideProps(context) {
     }
 
   } else {
-    console.error('error fetching data')
+    return {
+      props: {
+        'session': 'no session data'
+      }
+    }
   }
 }

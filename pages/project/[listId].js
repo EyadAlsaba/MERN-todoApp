@@ -1,22 +1,22 @@
-// import { useContext, useEffect, useState } from "react";
 import Tasks from '@/components/tasks.js'
 import NewTask from "@/components/newTask";
-// url query can be exposed by useRouter hook
-// import { ClientContext } from '@/context/clientHandlers.js';
-
+/*
+  * import { useContext, useEffect, useState } from "react";
+  * url query can be exposed by useRouter hook
+  * import { ClientContext } from '@/context/clientHandlers.js';
+*/
 export default function ClientTasks({ docs }) {
-
+  const { tasks } = docs[0]
   return (
     <>
       {
-        !docs ? <h3 style={{ margin: '5rem' }}>No Tasks to display</h3> :
-          docs.map((doc, index) => {
-            return (
-              <Tasks {...doc} key={index} />
-            )
-          })
+        tasks && tasks.map((task, index) => {
+          return (
+            <Tasks {...task} key={index} />
+          )
+        })
       }
-      <NewTask />
+      < NewTask />
     </>
   )
 }
@@ -24,7 +24,7 @@ export default function ClientTasks({ docs }) {
 export async function getServerSideProps({ params }) {
   const request = await fetch(`http://localhost:3000/api/server/projectTasks/${params.listId}`)
   const response = await request.json();
-  const { docs } = response;
+  const docs = response.docs.client_lists.filter(item => item._id === params.listId)
   return {
     props: {
       docs

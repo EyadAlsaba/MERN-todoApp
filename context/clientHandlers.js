@@ -1,5 +1,4 @@
-import { createContext, useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import { createContext } from "react";
 import { useSession } from "next-auth/react";
 
 /*
@@ -12,19 +11,14 @@ import { useSession } from "next-auth/react";
 const ClientContext = createContext();
 
 const HandlersProvider = ({ children }) => {
-  const { query } = useRouter();
   const { data: session } = useSession();
 
-  const addNewTask = async (title) => {
-    console.log(title)
+  const addNewTask = async ({ taskTitle, query }) => {
+    // console.log(taskTitle, query.listId)
     try {
       const res = await fetch('http://localhost:3000/api/server/projectTasks/newTask', {
         method: 'POST',
-        body: JSON.stringify({
-          clientId: session.user.email,
-          ownedBy: query.listId,
-          title
-        }),
+        body: JSON.stringify({ taskTitle, client_email: session.user.email, listId: query.listId }),
         headers: { 'Content-Type': 'application/json' }
       });
       await res.json()

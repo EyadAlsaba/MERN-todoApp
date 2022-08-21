@@ -1,10 +1,9 @@
 import connectMongoose from '@/lib/connectMongo.js'
-import { ClientProfile, ClientProject } from '@/database/userModel.js';
+import { ClientProfile } from '@/database/userModel.js';
 
 /* 
-  * REQUESTING THIS ROUTE WITH GET REQ SEND US BACK ALL THE CLIENTS PROFILES
   * const session = await getSession({ req }); **
-  * SESSIONS IN API ROUTES IS NULL || ONLY FRONT-END EXISTENCE **
+  * ------- ( SESSIONS IN API ROUTES IS NULL || ONLY FRONT-END EXISTENCE ) ------ *
 */
 
 export default async function clientsRecords(req, res) {

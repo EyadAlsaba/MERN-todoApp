@@ -3,11 +3,11 @@ import { useState } from 'react'
 import { MdArrowDropUp, MdArrowDropDown, MdDelete } from 'react-icons/md'
 
 export default function Tasks({ title, date, note, priority, _id }) {
+  // console.log(tasks)
   const [open, setOpen] = useState(false);
   const [DATE, SETdate] = useState(date);
   const [NOTE, SETnote] = useState(note);
   const [PRIORITY, SETpriority] = useState(priority);
-  // console.log(DATE, NOTE, PRIORITY)
 
   function dropMenu() {
     document.getElementById(`${_id}`).classList.toggle(`${Styles.show}`)

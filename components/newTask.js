@@ -2,14 +2,16 @@ import Styles from '@/styles/NewTask.module.css'
 import { MdOutlineAdd } from 'react-icons/md'
 import { useState, useContext } from 'react'
 import { ClientContext } from '@/context/clientHandlers.js';
+import { useRouter } from 'next/router';
 
 export default function NewTask() {
-
+  const { query } = useRouter();
   const [taskTitle, setTaskTitle] = useState('');
   const { addNewTask } = useContext(ClientContext);
 
   function handleSubmit(e) {
-    addNewTask(taskTitle);
+    e.preventDefault();
+    addNewTask({ taskTitle, query });
     setTaskTitle('')
   }
 

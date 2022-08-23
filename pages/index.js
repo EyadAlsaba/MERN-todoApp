@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { useSession, getSession } from "next-auth/react"
 import Welcome from '@/components/welcome.js';
 
-
 export default function Home() {
   const { data: session } = useSession();
   return (
@@ -43,8 +42,8 @@ export async function getServerSideProps(context) {
 
     if (session) {
       const isClientExist = clientsData.some(client => client['client_email'] === session.user.email);
-      if (!isClientExist) {
 
+      if (!isClientExist) {
         const newClient = await fetch('http://localhost:3000/api/server/clientInstance', {
           body: JSON.stringify({
             'email': session.user.email

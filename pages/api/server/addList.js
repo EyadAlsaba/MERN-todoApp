@@ -21,15 +21,15 @@ export default async function handler(req, res) {
   try {
     await connectMongoose();
     const { clientEmail, list_title } = req.body;
-    const client = ClientProfile.findOneAndUpdate(
+    ClientProfile.findOneAndUpdate(
       { client_email: clientEmail, 'client_lists.list_title': { $ne: list_title } },
-      { $addToSet: { client_lists: { list_title } } },
+      { "$push": { client_lists: { list_title } } },
       { new: true },
       function (err, doc) {
         if (err) {
           console.error(err)
         } else if (doc === null) {
-          res.status(400).json({ success: false, msg: 'this request is failed because the title is already exist' })
+          res.status(500).json({ success: false, msg: 'this request is failed because the title is already exist' })
         }
         res.status(200).redirect('/lists')
       })

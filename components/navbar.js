@@ -36,11 +36,9 @@ function Navbar() {
             <Link href='/lists'>projects</Link></li>
           <li onClick={() => toggle()}>
             <Link href='/about'>about</Link></li>
-          <li onClick={() => {
-            status === 'authenticated' ? signOut() : signIn();
-            toggle()
-          }}>
-            <Link href='/auth/signin'>{session ? 'log out' : 'log in'}</Link></li>
+          <li onClick={() => toggle()}>
+            <Link href='/auth/signin'>{session ? 'log out' : 'log in'}</Link>
+          </li>
         </ul>
       </div>
     </nav >

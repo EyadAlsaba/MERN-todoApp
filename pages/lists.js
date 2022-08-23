@@ -5,11 +5,16 @@ import Styles from "@/styles/Lists.module.css"
 import DeleteList from "@/components/listDeleteForm";
 import Head from "next/head";
 import Link from "next/link";
+// -----------------------------------------------------testing
+// import { useContext } from "react";
+// import { ClientContext } from "@/context/clientHandlers";
 
 export default function Projects({ clientLists }) {
   const { data: session } = useSession({ required: true });
   const [title, setTitle] = useState('');
   const [failed, setFailed] = useState(false);
+
+  // const { gettingClientsData } = useContext(ClientContext);
 
   const submitForm = async (e) => {
     e.preventDefault();
@@ -42,11 +47,17 @@ export default function Projects({ clientLists }) {
       }
     };
 
+    // const testing = await gettingClientsData();
+    // if (testing) {
+    //   console.log('testing fire')
+    //   console.log(testing)
+    // }
+
     window.addEventListener('click', modalHandler);
     return () => {
       window.removeEventListener('click', modalHandler)
     }
-  }, [failed]);
+  }, [failed,]);
 
   if (session) {
     return (
@@ -111,23 +122,3 @@ export async function getServerSideProps(context) {
     }
   }
 };
-
-/*
-{
-  "client_email":"eyadalsbaa1988@gmail.com",
-  "client_lists":[
-    {
-      "list_title":"sample",
-      "tasks":[
-        {
-          "title":"sample task",
-          "note":"",
-          "date":"",
-          "priority":"",
-          "completed":false,
-        }
-      ]
-    }
-  ]
-}
-*/

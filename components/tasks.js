@@ -1,18 +1,26 @@
 import Styles from '@/styles/task.module.css'
-import { useState } from 'react'
-import { MdArrowDropUp, MdArrowDropDown, MdDelete } from 'react-icons/md'
+import { useState, useContext } from 'react'
+import { MdArrowDropUp, MdArrowDropDown } from 'react-icons/md'
+import { ClientContext } from '@/context/clientHandlers';
 
 export default function Tasks({ title, date, note, priority, _id }) {
-  // console.log(tasks)
+
   const [open, setOpen] = useState(false);
   const [DATE, SETdate] = useState(date);
   const [NOTE, SETnote] = useState(note);
   const [PRIORITY, SETpriority] = useState(priority);
 
+  const { deleteTask } = useContext(ClientContext);
+
   function dropMenu() {
     document.getElementById(`${_id}`).classList.toggle(`${Styles.show}`)
     setOpen(!open)
   }
+
+  function deleteHandler() {
+    deleteTask(_id);
+    location.reload();
+  };
 
   return (
     <section className={Styles.container}>
@@ -25,6 +33,7 @@ export default function Tasks({ title, date, note, priority, _id }) {
           }
         </button>
       </div>
+
       <div id={`${_id}`} className={Styles.taskBody}>
         <div className={Styles.formContainer}>
           <div className={Styles.wrapper}>
@@ -47,10 +56,8 @@ export default function Tasks({ title, date, note, priority, _id }) {
           </div>
 
           <div className={Styles.controller}>
-            <button>
-              delete
-            </button>
-            <button>update</button>
+            <button onClick={() => deleteHandler()}>delete</button>
+            <button onClick={() => updateHandler()}>update</button>
           </div>
         </div>
       </div>

@@ -9,8 +9,7 @@ export default function NewTask() {
   const [taskTitle, setTaskTitle] = useState('');
   const { addNewTask } = useContext(ClientContext);
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit() {
     addNewTask({ taskTitle, query });
     setTaskTitle('')
   }

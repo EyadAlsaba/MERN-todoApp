@@ -67,8 +67,18 @@ button {
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 2px;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: var(--green-color);
+  background-color: var(--light-beige);
+  border-radius: 4px;
+  padding: .4rem;
+  transition: .3s linear;
+}
+
+.homeSections a:hover {
+  background-color: var(--green-color);
+  color: var(--light-beige);
+  transition: .3s linear;
 }
 
 @media (min-width:1200px) {

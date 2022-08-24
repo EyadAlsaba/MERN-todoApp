@@ -9,7 +9,7 @@ export default async function findTasks(req, res) {
       { "client_lists.tasks.$": 1 },
       (error, docs) => {
         if (docs) {
-          res.status(200).json(docs);
+          res.status(200).json(docs.client_lists);
         } else {
           res.status(500).json({ error, docs, msg: `no docs in ${__filename}` });
         }

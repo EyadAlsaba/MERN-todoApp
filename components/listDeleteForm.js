@@ -3,12 +3,12 @@ import { AiOutlineDelete } from 'react-icons/ai'
 import Styles from '@/styles/Lists.module.css'
 
 
-export default function DeleteList({ infoProps }) {
+export default function DeleteList({ list }) {
   const [checked, setChecked] = useState(false);
-  const handleSubmit = async (e) => {
+  const handleSubmit = async () => {
     const option = {
       method: 'DELETE',
-      body: JSON.stringify(infoProps),
+      body: JSON.stringify({ projectId: list._id }),
       headers: {
         'content-Type': 'application/json'
       }
@@ -17,15 +17,14 @@ export default function DeleteList({ infoProps }) {
   };
 
   return (
-    infoProps.index !== 0 ?
+    list.list_title !== 'sample' ?
       <>
         <form onSubmit={handleSubmit} className={Styles.delForm}>
-          <input type='checkBox' value={infoProps._id} onChange={() => setChecked(!checked)} checked={checked} />
+          <input type='checkBox' value={list._id} onChange={() => setChecked(!checked)} checked={checked} />
           {
             checked ? <button type="submit" className={Styles.delBtn}><AiOutlineDelete /></button> : null
           }
         </form>
-
       </>
       :
       null

@@ -1,6 +1,6 @@
 import connectMongoose from "@/lib/connectMongo";
 import { ClientProfile } from "@/database/userModel";
-
+import { ObjectId } from "mongodb";
 /*
  * The $pull operator removes from an existing array all instances of a value 
  * or values that match a specified condition.
@@ -12,14 +12,14 @@ export default async function deleteList(req, res) {
   try {
     await connectMongoose();
     const deletedList = ClientProfile.findOneAndUpdate(
-      { client_email: req.body.email },
-      { $pull: { client_lists: { _id: req.body._id } } },
+      { client_lists: { $elemMatch: { _id: req.body.projectId } } },
+      { $pull: { client_lists: { _id: req.body.projectId } } },
       { new: true },
       function (err, doc) {
         if (err) {
           console.log(err);
         } else {
-          res.status(200).redirect('/lists')
+          res.status(200).end()
         }
       })
 

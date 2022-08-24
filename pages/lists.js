@@ -5,16 +5,11 @@ import Styles from "@/styles/Lists.module.css"
 import DeleteList from "@/components/listDeleteForm";
 import Head from "next/head";
 import Link from "next/link";
-// -----------------------------------------------------testing
-// import { useContext } from "react";
-// import { ClientContext } from "@/context/clientHandlers";
 
 export default function Projects({ clientLists }) {
   const { data: session } = useSession({ required: true });
   const [title, setTitle] = useState('');
   const [failed, setFailed] = useState(false);
-
-  // const { gettingClientsData } = useContext(ClientContext);
 
   const submitForm = async (e) => {
     e.preventDefault();
@@ -47,12 +42,6 @@ export default function Projects({ clientLists }) {
       }
     };
 
-    // const testing = await gettingClientsData();
-    // if (testing) {
-    //   console.log('testing fire')
-    //   console.log(testing)
-    // }
-
     window.addEventListener('click', modalHandler);
     return () => {
       window.removeEventListener('click', modalHandler)
@@ -76,7 +65,7 @@ export default function Projects({ clientLists }) {
                       {list.list_title}
                     </a>
                   </Link>
-                  <DeleteList infoProps={{ ...list, index, ...session.user }} />
+                  <DeleteList list={list} />
                 </div>
               )
             })
@@ -106,19 +95,11 @@ export default function Projects({ clientLists }) {
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
-  const response = await fetch(`http://localhost:3000/api/server/app`)
-  const responseResolve = await response.json();
-  if (session) {
-    const clientLists = responseResolve.filter(client => client.client_email === session.user.email)[0].client_lists
-    return {
-      props: {
-        clientLists
-      }
-    }
-  }
+  const response = await fetch(`http://localhost:3000/api/server/${session.user.email}`)
+  const clientLists = await response.json();
   return {
     props: {
-      clientLists: []
+      clientLists
     }
   }
 };

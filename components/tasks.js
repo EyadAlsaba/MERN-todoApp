@@ -9,7 +9,6 @@ export default function Tasks({ title, date, note, priority, _id }) {
   const [DATE, SETdate] = useState(date);
   const [NOTE, SETnote] = useState(note);
   const [PRIORITY, SETpriority] = useState(priority);
-
   const { deleteTask } = useContext(ClientContext);
 
   function dropMenu() {

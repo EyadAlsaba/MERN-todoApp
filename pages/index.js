@@ -1,10 +1,21 @@
+import { useSession } from "next-auth/react"
+import { ClientContext } from '@/context/clientHandlers';
+import { useContext, useEffect } from 'react';
 import Head from 'next/head'
 import Link from 'next/link';
-import { useSession, getSession } from "next-auth/react"
 import Welcome from '@/components/welcome.js';
 
 export default function Home() {
   const { data: session } = useSession();
+  const { createClientProfile } = useContext(ClientContext);
+
+  useEffect(() => {
+    if (session) {
+      createClientProfile();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [session == null])
+
   return (
     <>
       <Head>
@@ -30,44 +41,4 @@ export default function Home() {
       }
     </>
   )
-}
-
-export async function getServerSideProps(context) {
-
-  const session = await getSession(context);
-  const req = await fetch('http://localhost:3000/api/server/app');
-  const clientsData = await req.json();
-
-  if (clientsData) {
-
-    if (session) {
-      const isClientExist = clientsData.some(client => client['client_email'] === session.user.email);
-
-      if (!isClientExist) {
-        const newClient = await fetch('http://localhost:3000/api/server/clientInstance', {
-          body: JSON.stringify({
-            'email': session.user.email
-          }),
-          headers: {
-            "Content-Type": "application/json"
-          },
-          method: 'POST'
-        })
-        await newClient.json();
-      }
-    }
-
-    return {
-      props: {
-        clientsData,
-      }
-    }
-
-  } else {
-    return {
-      props: {
-        'session': 'no session data'
-      }
-    }
-  }
 }

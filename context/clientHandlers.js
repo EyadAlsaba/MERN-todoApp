@@ -1,12 +1,6 @@
 import { createContext } from "react";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
-/*
- * Context is designed to share data that can be considered “global”
- * for a tree of React components, thus DO NOT relay on states while running logic functions 
- * remember on Hard reload ' Refresh ' things will be initiate again!!!
- * functions defined here will communicate with the server, where server will handle the database OP.
-*/
 
 const ClientContext = createContext();
 
@@ -14,24 +8,18 @@ const HandlersProvider = ({ children }) => {
   const { data: session } = useSession();
 
   const createClientProfile = async () => {
-    const req = await fetch('http://localhost:3000/api/server/app');
-    const clientsData = await req.json();
-
-    if (clientsData) {
-      const profile = clientsData.some(doc => doc.client_email === session.user.email);
-
-      if (!profile) {
-        const newClient = await fetch('http://localhost:3000/api/server/clientInstance', {
-          body: JSON.stringify({
-            'email': session.user.email
-          }),
-          headers: {
-            "Content-Type": "application/json"
-          },
-          method: 'POST'
-        })
-        await newClient.json();
-      }
+    const res = await fetch(`http://localhost:3000/api/server/app/${session.user.email}`);
+    const clientExists = await res.json();
+    if (!clientExists) {
+      await fetch('http://localhost:3000/api/server/app/clientInstance', {
+        body: JSON.stringify({
+          'email': session.user.email
+        }),
+        headers: {
+          "Content-Type": "application/json"
+        },
+        method: 'POST'
+      })
     }
   }
 
@@ -50,21 +38,34 @@ const HandlersProvider = ({ children }) => {
 
   const deleteTask = async (taskId) => {
     try {
-      const res = await fetch('http://localhost:3000/api/server/projectTasks/deleteTask', {
+      await fetch('http://localhost:3000/api/server/projectTasks/deleteTask', {
         method: 'DELETE',
         body: JSON.stringify({ taskId }),
         headers: { 'Content-Type': 'application/json' }
       });
-      await res.json()
     } catch (error) {
       console.log(error)
     }
   }
 
+  const updateTask = async (date, note, priority, taskId) => {
+    try {
+      const doc = await fetch('/api/server/projectTasks/updateTask', {
+        method: 'PUT',
+        body: JSON.stringify({ date, note, priority, taskId }),
+        headers: { 'Content-Type': 'application/json' }
+      });
+      await doc.json()
+    } catch (error) {
+      console.log('context error', error)
+    }
+  };
+
   return (
     < ClientContext.Provider value={{
       addNewTask,
       deleteTask,
+      updateTask,
       createClientProfile
     }}>
       {children}

@@ -21,7 +21,7 @@ export default function Projects({ clientLists }) {
       }),
       headers: { 'content-Type': 'application/json' }
     };
-    const response = await fetch('api/server/addList', option);
+    const response = await fetch('api/server/projectLists/addList', option);
     !response.ok ? setFailed(true) : location.reload();
   };
 
@@ -78,7 +78,7 @@ export default function Projects({ clientLists }) {
           <div className={Styles.modal} id='modal'>
             <div className={Styles.modalContent}>
               <form onSubmit={submitForm} className={Styles.formContent}>
-                <label>list title</label>
+                <label>title</label>
                 <input onChange={(e) => setTitle(e.target.value)} value={title} type='text' placeholder='e.g. events' required autoFocus />
                 <button type="submit" className={Styles.formBtn}>add</button>
               </form>
@@ -95,11 +95,16 @@ export default function Projects({ clientLists }) {
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
-  const response = await fetch(`http://localhost:3000/api/server/${session.user.email}`)
-  const clientLists = await response.json();
-  return {
-    props: {
-      clientLists
+  if (session) {
+    const response = await fetch(`http://localhost:3000/api/server/projectLists/${session.user.email}`)
+    const clientLists = await response.json();
+    return {
+      props: {
+        clientLists
+      }
     }
+  }
+  return {
+    props: {}
   }
 };

@@ -4,8 +4,8 @@ import { ObjectId } from 'mongodb';
 
 export default async function findTasks(req, res) {
   try {
-    const connected = await connectMongoose();
-    const taskQuery = ClientProfile.findOne({ "client_lists._id": new ObjectId(req.query.getTasksList) },
+    await connectMongoose();
+    ClientProfile.findOne({ "client_lists._id": new ObjectId(req.query.getTasksList) },
       { "client_lists.tasks.$": 1 },
       (error, docs) => {
         if (docs) {

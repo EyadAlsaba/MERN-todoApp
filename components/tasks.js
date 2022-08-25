@@ -9,7 +9,7 @@ export default function Tasks({ title, date, note, priority, _id }) {
   const [DATE, SETdate] = useState(date);
   const [NOTE, SETnote] = useState(note);
   const [PRIORITY, SETpriority] = useState(priority);
-  const { deleteTask } = useContext(ClientContext);
+  const { deleteTask, updateTask } = useContext(ClientContext);
 
   function dropMenu() {
     document.getElementById(`${_id}`).classList.toggle(`${Styles.show}`)
@@ -20,7 +20,10 @@ export default function Tasks({ title, date, note, priority, _id }) {
     deleteTask(_id);
     location.reload();
   };
-
+  function updateHandler() {
+    updateTask(DATE, NOTE, PRIORITY, _id);
+    // location.reload();
+  }
   return (
     <section className={Styles.container}>
       <div className={Styles.filler}>{" "}</div>

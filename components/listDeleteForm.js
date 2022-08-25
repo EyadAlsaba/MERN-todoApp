@@ -13,7 +13,7 @@ export default function DeleteList({ list }) {
         'content-Type': 'application/json'
       }
     };
-    await fetch('api/server/deleList', option);
+    await fetch('api/server/projectLists/deleList', option);
   };
 
   return (

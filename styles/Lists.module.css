@@ -75,8 +75,6 @@
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -85,14 +83,14 @@
   background-color: var(--light-green);
   color: inherit;
   margin: auto;
-  padding: 2rem 1rem;
-  width: 35%;
+  padding: 2rem;
+  width: fit-content;
   box-shadow: 0 4px 8px 0 var(--green-color), 0 0 8px 0 var(--light-green);
 }
 
 .formContent {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   text-transform: capitalize;
 }
@@ -103,10 +101,6 @@
   padding: .4rem;
 }
 
-.formContent input[name='list_title'] {
-  width: 70%;
-}
-
 .formContent input:focus-visible {
   outline: none;
 }
@@ -115,6 +109,7 @@
   border: 1px solid var(--light-beige);
   border-radius: 5px;
   padding: .4rem;
+  margin: 0 .5rem;
   text-transform: capitalize;
   letter-spacing: 1px;
   font-weight: bold;
@@ -143,16 +138,9 @@
 
 @media (max-width:992px) {
   .modal {
-    padding-top: 35%;
+    padding-top: 45%;
   }
 
-  .modalContent {
-    width: 50%;
-  }
-
-  .formContent input[name='list_title'] {
-    width: 50%;
-  }
 }
 
 @media (max-width: 786px) {
@@ -191,18 +179,13 @@
   }
 
   .modalContent {
-    height: 40%;
-    width: 80%;
+    padding: 1rem;
+    width: fit-content;
+    height: 20%;
   }
 
   .formContent {
-    flex-direction: column;
-    align-items: flex-start;
     height: 100%
   }
 
-  .formContent input[name='list_title'] {
-    width: 80%;
-    margin: .5rem 0;
-  }
 }

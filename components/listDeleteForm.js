@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { AiOutlineDelete } from 'react-icons/ai'
 import Styles from '@/styles/Lists.module.css'
 
@@ -14,17 +14,18 @@ export default function DeleteList({ list }) {
       }
     };
     await fetch('api/server/projectLists/deleList', option);
+    location.reload()
   };
 
   return (
     list.list_title !== 'sample' ?
       <>
-        <form onSubmit={handleSubmit} className={Styles.delForm}>
+        <form className={Styles.delForm}>
           <input type='checkBox' value={list._id} onChange={() => setChecked(!checked)} checked={checked} />
-          {
-            checked ? <button type="submit" className={Styles.delBtn}><AiOutlineDelete /></button> : null
-          }
         </form>
+        {
+          checked ? <button type="submit" className={Styles.delBtn} onClick={() => handleSubmit()}><AiOutlineDelete /></button> : null
+        }
       </>
       :
       null

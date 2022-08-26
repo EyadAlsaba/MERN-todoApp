@@ -169,8 +169,9 @@
   }
 
   .delBtn {
-    top: 2.8em;
-    left: 5em;
+    top: 70%;
+    left: 82%;
+    font-size: 1.3rem;
   }
 
   /* modal style */

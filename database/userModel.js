@@ -30,6 +30,7 @@ const clientSchema = new mongoose.Schema({
 // Models
 const ClientProfile = mongoose.models.ClientProfile || mongoose.model('ClientProfile', clientSchema);
 
+mongoose.set('debug', true);
 
 module.exports = { ClientProfile }
 

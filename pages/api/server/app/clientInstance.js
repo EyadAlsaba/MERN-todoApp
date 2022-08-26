@@ -14,12 +14,11 @@ export default async function addClient(req, res) {
       await connectMongoose();
       const existAlready = await ClientProfile.findOne({ client_email: email })
 
-      if (existAlready == null) {
+      if (!existAlready) {
         const client = await ClientProfile.create({ client_email: `${email}`, client_lists: [SAMPLE_LIST] });
-
         res.status(201).json(client)
       } else {
-        res.status(104).json({ msg: 'this instance is already registered', existAlready })
+        res.status(204).end()
       }
     } catch (error) {
       res.send(error)

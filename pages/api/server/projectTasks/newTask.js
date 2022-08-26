@@ -5,8 +5,8 @@ import { ObjectId } from "mongodb";
 export default async function handler(req, res) {
   try {
     await connectMongoose();
-    const addTask = ClientProfile.findOneAndUpdate(
-      { "client_lists": { "$elemMatch": { _id: new ObjectId(req.body.listId) } } },
+    ClientProfile.findOneAndUpdate(
+      { "client_lists": { "$elemMatch": { _id: new ObjectId(req.body.listId[1]) } } },
       { "$push": { 'client_lists.$.tasks': { title: req.body.taskTitle } } },
       { new: true },
       function (err, docs) {

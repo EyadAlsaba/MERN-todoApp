@@ -60,7 +60,7 @@ export default function Projects({ clientLists }) {
               return (
                 <div key={index} className={Styles.div}>
 
-                  <Link href={`project/${list._id}`}>
+                  <Link href={`project/${index}/${list._id}`}>
                     <a className={Styles.listTitle}>
                       {list.list_title}
                     </a>

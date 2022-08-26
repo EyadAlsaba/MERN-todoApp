@@ -12,6 +12,7 @@ export default async function deleteList(req, res) {
       function (err, doc) {
         if (err) {
           console.log(err);
+          res.status(500).json({ err, msg: 'failed at delete list' })
         } else {
           res.status(204).end()
         }

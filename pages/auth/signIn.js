@@ -42,9 +42,9 @@ export async function getServerSideProps(context) {
   * providers holding value of null
   *  see context O props in the components console with react tool extension.
  */
-  const providers = await getProviders(context)
+  const providers = await getProviders()
   const session = await getSession(context);
-  console.log(providers, session)
+  console.log('providers =>', providers, '/n', 'session =>', session)
   if (session) {
     return {
       redirect: {
@@ -54,6 +54,6 @@ export async function getServerSideProps(context) {
     }
   }
   return {
-    props: { providers }
+    props: providers
   }
 }

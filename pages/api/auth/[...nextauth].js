@@ -18,7 +18,7 @@ export default NextAuth({
   pages: {
     signIn: "/auth/signIn",
   },
-  secret: process.env.JWT_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
   adapter: MongoDBAdapter(clientPromise),
   callbacks: {
     async signIn({ account, profile }) {

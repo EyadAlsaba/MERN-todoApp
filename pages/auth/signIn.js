@@ -37,14 +37,10 @@ export default function SignIn({ providers }) {
 }
 
 export async function getServerSideProps(context) {
-  /*
-  * https://next-auth.js.org/getting-started/client#getproviders
-  * providers holding value of null
-  *  see context O props in the components console with react tool extension.
- */
+
   const providers = await getProviders()
   const session = await getSession(context);
-  console.log('providers =>', providers, '/n', 'session =>', session)
+  console.log('providers =>', providers, 'session =>', session)
   if (session) {
     return {
       redirect: {

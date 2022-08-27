@@ -36,7 +36,7 @@ export default function Home() {
         session ? <Welcome user={session.user} /> :
           <section className='homeSections'>
             <h1>you are not logged in</h1>
-            <Link href='/auth/signin'>Log in</Link>
+            <Link href='/auth/signIn'>Log in</Link>
           </section>
       }
     </>

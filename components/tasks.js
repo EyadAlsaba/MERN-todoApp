@@ -1,4 +1,4 @@
-import Styles from '@/styles/task.module.css'
+import Styles from '@/styles/Task.module.css'
 import { useState, useContext } from 'react'
 import { MdArrowDropUp, MdArrowDropDown } from 'react-icons/md'
 import { ClientContext } from '@/context/clientHandlers';

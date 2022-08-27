@@ -5,7 +5,6 @@ import Styles from '@/styles/SignIn.module.css'
 
 export default function SignIn({ providers }) {
   const { query } = useRouter();
-
   return (
     <>
       <section className={Styles.sectionContainer}>
@@ -50,6 +49,6 @@ export async function getServerSideProps(context) {
     }
   }
   return {
-    props: providers
+    props: { providers }
   }
 }

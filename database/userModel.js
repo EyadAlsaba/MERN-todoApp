@@ -30,20 +30,6 @@ const clientSchema = new mongoose.Schema({
 // Models
 const ClientProfile = mongoose.models.ClientProfile || mongoose.model('ClientProfile', clientSchema);
 
-mongoose.set('debug', true);
+//mongoose.set('debug', true);
 
 module.exports = { ClientProfile }
-
-/*
-
-* errors middleware handlers
-  listSchema.post('save', function (error, doc, next) {
-    if (error.code === 11000) {
-      console.log(error, doc)
-      next(new Error('This title is exists,pls choose something different'));
-    } else {
-      next();
-    }
-  });
-
-*/

@@ -39,7 +39,6 @@ export async function getServerSideProps(context) {
 
   const providers = await getProviders()
   const session = await getSession(context);
-  console.log('providers =>', providers, 'session =>', session)
   if (session) {
     return {
       redirect: {

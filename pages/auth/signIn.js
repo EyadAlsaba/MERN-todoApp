@@ -1,4 +1,4 @@
-import { getSession, getProviders, signIn } from "next-auth/react"
+import { getProviders, signIn } from "next-auth/react"
 import { AiFillGoogleCircle, AiFillGithub } from 'react-icons/ai'
 import { useRouter } from "next/router"
 import Styles from '@/styles/SignIn.module.css'
@@ -36,17 +36,7 @@ export default function SignIn({ providers }) {
 }
 
 export async function getServerSideProps(context) {
-
   const providers = await getProviders()
-  const session = await getSession(context);
-  if (session) {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false
-      }
-    }
-  }
   return {
     props: { providers }
   }

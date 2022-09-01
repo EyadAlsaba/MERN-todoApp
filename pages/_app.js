@@ -5,7 +5,7 @@ import { SessionProvider } from 'next-auth/react'
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
-    <SessionProvider session={session}>
+    <SessionProvider session={session} basePath='https://check-todo-app.vercel.app/api/auth'>
       <HandlersProvider>
         <Layout>
           <Component {...pageProps} />

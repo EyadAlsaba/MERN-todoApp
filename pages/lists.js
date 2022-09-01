@@ -96,7 +96,7 @@ export default function Projects({ clientLists }) {
 export async function getServerSideProps(context) {
   const session = await getSession(context);
   if (session) {
-    const response = await fetch(`http://localhost:3000/api/server/projectLists/${session.user.email}`)
+    const response = await fetch(`https://check-todo-app.vercel.app/api/server/projectLists/${session.user.email}`)
     const clientLists = await response.json();
     return {
       props: {

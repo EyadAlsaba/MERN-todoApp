@@ -9,16 +9,20 @@ export default function NewTask() {
   const [taskTitle, setTaskTitle] = useState('');
   const { addNewTask } = useContext(ClientContext);
 
-  function handleSubmit() {
-    addNewTask({ taskTitle, query });
-    setTaskTitle('')
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const isAdded = await addNewTask({ taskTitle, query });
+    setTaskTitle('');
+    if (isAdded) {
+      location.reload();
+    }
   }
 
   return (
     <div className={Styles.formCon}>
       <form className={Styles.formNewTask} onSubmit={handleSubmit}>
         <MdOutlineAdd />
-        <input type='text' placeholder='new task...' value={taskTitle} onChange={(e) => setTaskTitle(e.target.value)} required />
+        <input type='text' placeholder='new task...' value={taskTitle} onChange={(e) => setTaskTitle(e.target.value)} autoFocus required />
         {
           taskTitle ? <button type='submit' className={Styles.btn}>Add</button> : null
         }

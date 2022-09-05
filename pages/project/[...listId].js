@@ -1,16 +1,20 @@
+import { useRouter } from 'next/router';
 import Tasks from '@/components/tasks.js'
 import NewTask from "@/components/newTask";
-import { useRouter } from 'next/router';
+import findListTasks from '@/server/projectTasks/[getTasksList]'
+import { useEffect } from 'react';
 
 export default function ClientTasks({ tasks }) {
+  // I need to reload the page whenever  this component mount (tasks changed/added)!
   const { query } = useRouter();
   const listIndex = Number(query.listId[0]);
+
   return (
     <>
       {
         tasks && tasks.map((task, index) => {
           return (
-            <Tasks infoProps={{ ...task, taskIndex: index, listIndex }} key={index} />
+            <Tasks taskProps={{ ...task, taskIndex: index, listIndex }} key={index} />
           )
         })
       }
@@ -20,11 +24,11 @@ export default function ClientTasks({ tasks }) {
 }
 
 export async function getServerSideProps({ params }) {
-  const response = await fetch(`http://localhost:3000/api/server/projectTasks/${params.listId[1]}`)
-  const data = await response.json()
+  const response = await findListTasks(params.listId[1]);
+  const docs = JSON.parse(response);
   return {
     props: {
-      tasks: data[0].tasks
+      tasks: docs.client_lists[0].tasks
     }
   }
 }

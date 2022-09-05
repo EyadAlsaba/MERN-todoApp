@@ -8,7 +8,6 @@ export default async function updateTask(req, res) {
     const record = await ClientProfile.findOne(
       { "client_lists.tasks._id": new ObjectId(req.body.taskId) },
       { "client_lists.tasks": 1 }).exec();
-    console.log(record)
 
     let nestedDoc = record.client_lists[req.body.listIndex].tasks[req.body.taskIndex]
     nestedDoc.note = req.body.note;

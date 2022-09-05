@@ -13,7 +13,7 @@ export default async function handler(req, res) {
         if (err) {
           res.status(500).json({ ...err, msg: `failed to add new task to project / ${req.body.listId}`, __filename })
         } else {
-          res.status(200).end()
+          res.status(200).json(docs)
         }
       });
   } catch (error) {

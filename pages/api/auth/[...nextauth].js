@@ -15,6 +15,9 @@ export default NextAuth({
       clientSecret: process.env.GITHUB_SECRET
     })
   ],
+  session: {
+    strategy: 'jwt'
+  },
   pages: {
     signIn: "/auth/signIn",
   },
@@ -28,4 +31,5 @@ export default NextAuth({
       return true;
     }
   },
+  debug: false
 });

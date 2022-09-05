@@ -18,13 +18,13 @@ export default function SignIn({ providers }) {
             : null
         }
         <div className={Styles.provider}>
-          <button onClick={() => signIn(providers.google.id, { callbackUrl: 'https://check-todo-app.vercel.app' })} className={Styles.btn}>
+          <button onClick={() => signIn(providers.google.id, { callbackUrl: `/` })} className={Styles.btn}>
             Sign in with google
             <AiFillGoogleCircle />
           </button>
         </div>
         <div className={Styles.provider}>
-          <button onClick={() => signIn(providers.github.id, { callbackUrl: 'https://check-todo-app.vercel.app' })} className={Styles.btn}>
+          <button onClick={() => signIn(providers.github.id, { callbackUrl: `/` })} className={Styles.btn}>
             Sign in with gitHub
             <AiFillGithub />
           </button>

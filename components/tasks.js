@@ -3,8 +3,8 @@ import { useState, useContext } from 'react'
 import { MdArrowDropUp, MdArrowDropDown } from 'react-icons/md'
 import { ClientContext } from '@/context/clientHandlers';
 
-export default function Tasks({ infoProps }) {
-  const { title, date, note, priority, _id } = infoProps;
+export default function Tasks({ taskProps }) {
+  const { title, date, note, priority, _id } = taskProps;
   const [open, setOpen] = useState(false);
   const [DATE, SETdate] = useState(date);
   const [NOTE, SETnote] = useState(note);
@@ -16,14 +16,18 @@ export default function Tasks({ infoProps }) {
     setOpen(!open)
   }
 
-  function deleteHandler() {
-    deleteTask(_id);
-    location.reload();
+  async function deleteHandler() {
+    const isDeleted = await deleteTask(_id);
+    if (isDeleted) {
+      location.reload();
+    }
   };
 
-  function updateHandler() {
-    updateTask(DATE, NOTE, PRIORITY, _id, infoProps.listIndex, infoProps.taskIndex);
-    location.reload();
+  async function updateHandler() {
+    const isUpdated = await updateTask(DATE, NOTE, PRIORITY, _id, taskProps.listIndex, taskProps.taskIndex);
+    if (isUpdated) {
+      location.reload();
+    }
   }
 
   return (

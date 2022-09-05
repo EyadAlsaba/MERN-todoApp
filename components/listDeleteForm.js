@@ -24,7 +24,9 @@ export default function DeleteList({ list }) {
           <input type='checkBox' value={list._id} onChange={() => setChecked(!checked)} checked={checked} />
         </form>
         {
-          checked ? <button type="submit" className={Styles.delBtn} onClick={() => handleSubmit()}><AiOutlineDelete /></button> : null
+          checked ?
+            <button type="submit" className={Styles.delBtn} onClick={() => handleSubmit()}><AiOutlineDelete /></button>
+            : null
         }
       </>
       :

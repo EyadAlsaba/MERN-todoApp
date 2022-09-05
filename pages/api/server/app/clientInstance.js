@@ -21,7 +21,7 @@ export default async function addClient(req, res) {
         res.status(204).end()
       }
     } catch (error) {
-      res.send(error)
+      res.status(500).send({ ...error, msg: `failed to create new client profile` })
     }
   } else {
     res.status(500).send({ Status: '500 request method is not POST' })

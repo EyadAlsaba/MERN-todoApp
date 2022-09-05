@@ -1,10 +1,11 @@
 import { useSession, getSession } from "next-auth/react";
 import { useState, useEffect } from "react";
-import { FaPlusCircle } from 'react-icons/fa'
-import Styles from "@/styles/Lists.module.css"
+import { FaPlusCircle } from 'react-icons/fa';
+import Styles from "@/styles/Lists.module.css";
 import DeleteList from "@/components/listDeleteForm";
 import Head from "next/head";
 import Link from "next/link";
+import getClientLists from '@/server/projectLists/[clientID]';
 
 export default function Projects({ clientLists }) {
   const { data: session } = useSession({ required: true });
@@ -46,7 +47,7 @@ export default function Projects({ clientLists }) {
     return () => {
       window.removeEventListener('click', modalHandler)
     }
-  }, [failed,]);
+  }, [failed]);
 
   if (session) {
     return (
@@ -59,7 +60,6 @@ export default function Projects({ clientLists }) {
             clientLists && clientLists.map((list, index) => {
               return (
                 <div key={index} className={Styles.div}>
-
                   <Link href={`project/${index}/${list._id}`}>
                     <a className={Styles.listTitle}>
                       {list.list_title}
@@ -96,8 +96,8 @@ export default function Projects({ clientLists }) {
 export async function getServerSideProps(context) {
   const session = await getSession(context);
   if (session) {
-    const response = await fetch(`https://check-todo-app.vercel.app/api/server/projectLists/${session.user.email}`)
-    const clientLists = await response.json();
+    const userDocs = await getClientLists(session.user.email);
+    const clientLists = JSON.parse(userDocs).client_lists;
     return {
       props: {
         clientLists
@@ -105,6 +105,6 @@ export async function getServerSideProps(context) {
     }
   }
   return {
-    props: {}
+    props: { msg: 'no session ' }
   }
 };

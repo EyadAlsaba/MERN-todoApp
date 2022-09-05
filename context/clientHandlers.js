@@ -20,11 +20,12 @@ const HandlersProvider = ({ children }) => {
 
   const addNewTask = async ({ taskTitle, query }) => {
     try {
-      await fetch('/api/server/projectTasks/newTask', {
+      const newTaskAdded = await fetch('/api/server/projectTasks/newTask', {
         method: 'POST',
         body: JSON.stringify({ taskTitle, listId: query.listId }),
         headers: { 'Content-Type': 'application/json' }
       });
+      return await newTaskAdded.json()
     } catch (error) {
       console.log(error)
     }
@@ -37,6 +38,7 @@ const HandlersProvider = ({ children }) => {
         body: JSON.stringify({ taskId }),
         headers: { 'Content-Type': 'application/json' }
       });
+      return true
     } catch (error) {
       console.log(error)
     }
@@ -50,6 +52,7 @@ const HandlersProvider = ({ children }) => {
         body: JSON.stringify({ date, note, priority, taskId, listIndex, taskIndex }),
         headers: { 'Content-Type': 'application/json' }
       });
+      return true
     } catch (error) {
       console.log('context error', error)
     }
@@ -68,21 +71,3 @@ const HandlersProvider = ({ children }) => {
 }
 
 export { ClientContext, HandlersProvider }
-
-/*
-  const createClientProfile = async () => {
-    const res = await fetch(`/api/server/app/${session.user.email}`);
-    const clientExists = await res.json();
-    if (!clientExists) {
-      await fetch('/api/server/app/clientInstance', {
-        body: JSON.stringify({
-          'email': session.user.email
-        }),
-        headers: {
-          "Content-Type": "application/json"
-        },
-        method: 'POST'
-      })
-    }
-  }
-*/

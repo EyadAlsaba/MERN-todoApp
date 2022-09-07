@@ -21,7 +21,7 @@ export default function Home() {
       <Head>
         <title>Todo App</title>
         <meta name="todo app" content="mange your projects simply" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
 
       <section className='homeSections'>

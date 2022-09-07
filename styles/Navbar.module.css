@@ -5,6 +5,7 @@
   background-color: var(--green-color);
   padding: 1rem;
   height: 60px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1), 0 0 4px 0 rgba(0, 0, 0, 0.1);
 }
 
 .brand {
@@ -42,12 +43,12 @@
 
 .links ul li {
   margin: 0 1rem;
-  transition: .5s linear;
+  transition: 0.5s linear;
 }
 
 .links li:hover {
   color: var(--primary-color);
-  transition: .5s linear;
+  transition: 0.5s linear;
 }
 
 .btn {
@@ -61,7 +62,6 @@
   .navbar {
     width: 100%;
     justify-content: space-between;
-
   }
 
   .links {
@@ -84,7 +84,6 @@
     display: block;
     height: 1em;
   }
-
 }
 
 @keyframes fadeIn {

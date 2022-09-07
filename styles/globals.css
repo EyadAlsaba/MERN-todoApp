@@ -16,7 +16,7 @@ body {
   background-color: var(--primary-color);
   color: var(--light-beige);
   height: 100vh;
-  background-image: url("../public/floating-cogs.svg");
+  background-image: url("https://check-todo-app-eyadalsaba.vercel.app/public/floating-cogs.svg");
 }
 
 * {

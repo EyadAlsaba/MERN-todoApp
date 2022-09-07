@@ -189,6 +189,7 @@
   .formContent {
     height: 100%;
     width: 100%;
+    justify-content: center;
   }
   .formContent label {
     font-size: 1.2rem;

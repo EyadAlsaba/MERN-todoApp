@@ -13,6 +13,7 @@
   font-size: 1.5rem;
   padding-bottom: 1rem;
   text-transform: uppercase;
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 .para {

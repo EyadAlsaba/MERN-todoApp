@@ -19,8 +19,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Todo App</title>
-        <meta name="todo app" content="mange your projects simply" />
+        <title>check todo-app</title>
+        <meta name="check todo-app" content="mange your projects simply" />
         <link rel="icon" href="/favicon.svg" />
       </Head>
 

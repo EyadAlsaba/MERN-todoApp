@@ -8,12 +8,9 @@ export default function ClientTasks({ tasks }) {
   // I need to reload the page whenever  this component mount (tasks changed/added)!
   const { query } = useRouter();
   const listIndex = Number(query.listId[0])
-  const [tasks, setTasks] = React.useState(tasks)
+  // const [tasks, setTasks] = React.useState(tasks)
 
-  useEffect(() => {
-    // get new tasks
-    setTasks(//new tasks)
-  })
+
   return (
     <>
       {

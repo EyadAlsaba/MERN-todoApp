@@ -1,11 +1,13 @@
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import { ClientContext } from '@/context/clientHandlers';
+import { useSession } from 'next-auth/react';
 import Tasks from '@/components/tasks'
 import NewTask from '@/components/newTask';
 import Loading from '@/components/Spinner';
 
 export default function ClientTasks() {
+  const { data: session } = useSession({ required: true });
   const { query } = useRouter();
   const isQueryExist = Object.hasOwn(query, "listId")
   const { todos, getTodos } = useContext(ClientContext);

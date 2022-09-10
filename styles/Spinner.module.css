@@ -1,0 +1,27 @@
+/* 
+  * REFERENCE:
+  * https://www.freecodecamp.org/news/how-to-build-a-delightful-loading-screen-in-5-minutes-847991da509f/
+*/
+
+.loading {
+  max-width: 100%;
+  text-align: center;
+  margin: 6rem 0 0 0;
+}
+
+.loading__anim {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 5px solid var(--light-beige);
+  border-left-color: var(--green-color);
+  border-top-color: var(--green-color);
+  animation: rotate 1s infinite linear;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(1turn);
+  }
+}

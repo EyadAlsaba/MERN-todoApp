@@ -10,8 +10,8 @@ export default function ClientTasks() {
   const { data: session } = useSession({ required: true });
   const { query } = useRouter();
   const isQueryExist = Object.hasOwn(query, "listId")
-  const { todos, getTodos } = useContext(ClientContext);
   const [loading, setLoading] = useState(true);
+  const { todos, getTodos } = useContext(ClientContext);
 
   useEffect(() => {
     (async () => {

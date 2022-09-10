@@ -7,7 +7,7 @@ import Head from "next/head";
 import Link from "next/link";
 import getClientLists from '@/server/projectLists/[clientID]';
 
-export default function Projects({ clientLists }) {
+export default function Lists({ clientLists }) {
   const { data: session } = useSession({ required: true });
   const [title, setTitle] = useState('');
   const [failed, setFailed] = useState(false);
@@ -54,6 +54,7 @@ export default function Projects({ clientLists }) {
       <>
         <Head>
           <title>projects</title>
+          <link rel="icon" href="/favicon.svg" />
         </Head>
         <section className={Styles.section}>
           {
@@ -83,7 +84,7 @@ export default function Projects({ clientLists }) {
                 <button type="submit" className={Styles.formBtn}>add</button>
               </form>
               {
-                failed ? <p className={Styles.errMsg}>this title is used</p> : null
+                failed && <p className={Styles.errMsg}>this title is used</p>
               }
             </div>
           </div>

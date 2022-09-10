@@ -1,36 +1,38 @@
 import { useRouter } from 'next/router';
-import Tasks from '@/components/tasks.js'
-import NewTask from "@/components/newTask";
-import findListTasks from '@/server/projectTasks/[getTasksList]'
-import { useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { ClientContext } from '@/context/clientHandlers';
+import Tasks from '@/components/tasks'
+import NewTask from '@/components/newTask';
+import Loading from '@/components/Spinner';
 
-export default function ClientTasks({ tasks }) {
-  // I need to reload the page whenever  this component mount (tasks changed/added)!
+export default function ClientTasks() {
   const { query } = useRouter();
-  const listIndex = Number(query.listId[0])
-  // const [tasks, setTasks] = React.useState(tasks)
+  const isQueryExist = Object.hasOwn(query, "listId")
+  const { todos, getTodos } = useContext(ClientContext);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    (async () => {
+      if (isQueryExist) {
+        await getTodos(query.listId[1]);
+        setLoading(false)
+      }
+    })()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query]);
 
   return (
     <>
       {
-        tasks && tasks.map((task, index) => {
-          return (
-            <Tasks taskProps={{ ...task, taskIndex: index, listIndex }} key={index} />
-          )
-        })
+        todos.length !== 0 ?
+          todos.map((task, index) => {
+            return (
+              <Tasks taskProps={{ ...task, taskIndex: index, listIndex: query.listId[0] }} key={index} />
+            )
+          }) :
+          loading && <Loading />
       }
-      < NewTask />
+      {!loading && <NewTask />}
     </>
   )
-}
-
-export async function getServerSideProps({ params }) {
-  const response = await findListTasks(params.listId[1]);
-  const docs = JSON.parse(response);
-  return {
-    props: {
-      tasks: docs.client_lists[0].tasks
-    }
-  }
 }

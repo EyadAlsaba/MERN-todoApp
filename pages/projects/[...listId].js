@@ -15,7 +15,7 @@ export default function ClientTasks() {
     (async () => {
       if (isQueryExist) {
         await getTodos(query.listId[1]);
-        setLoading(false)
+        setLoading(false);
       }
     })()
     // eslint-disable-next-line react-hooks/exhaustive-deps

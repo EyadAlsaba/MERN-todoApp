@@ -61,7 +61,7 @@ export default function Lists({ clientLists }) {
             clientLists && clientLists.map((list, index) => {
               return (
                 <div key={index} className={Styles.div}>
-                  <Link href={`project/${index}/${list._id}`}>
+                  <Link href={`projects/${index}/${list._id}`}>
                     <a className={Styles.listTitle}>
                       {list.list_title}
                     </a>

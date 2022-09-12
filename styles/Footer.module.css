@@ -5,6 +5,7 @@
   position: sticky;
   top: 100%;
   height: 60px;
+  box-shadow: 0 -4px 4px 0 rgba(0, 0, 0, 0.1), 0 0 4px 0 rgba(0, 0, 0, 0.1);
 }
 
 .container {
@@ -32,12 +33,12 @@
   transition: 0.5s linear;
 }
 
-@media (max-width:786px) {
+@media (max-width: 786px) {
   .container {
     margin: 0;
   }
 
   .conBox ul li {
-    margin: 0 .4rem;
+    margin: 0 0.4rem;
   }
 }

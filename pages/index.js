@@ -10,9 +10,7 @@ export default function Home() {
   const { createClientProfile } = useContext(ClientContext);
 
   useEffect(() => {
-    if (session) {
-      createClientProfile();
-    }
+    session && createClientProfile();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session == null])
 

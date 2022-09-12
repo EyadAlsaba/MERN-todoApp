@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className={Styles.footer}>
       <div className={Styles.container}>
         <div className={Styles.conBox}>
-          build with <Link href='https://nextjs.org/'>nextjs</Link>
+          built with <Link href='https://nextjs.org/'>nextjs</Link>
         </div>
         <div className={Styles.conBox}>
           <ul>

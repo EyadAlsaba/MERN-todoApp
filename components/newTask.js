@@ -12,19 +12,22 @@ export default function NewTask() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await addNewTask({ taskTitle, query });
     setTaskTitle('');
-    toast.success("Successfully added the new task.");
-  }
+    await addNewTask({ taskTitle, query });
+    toast.success("Successfully added the new task");
+  };
 
   return (
     <>
       <div className={Styles.formCon}>
         <form className={Styles.formNewTask} onSubmit={handleSubmit}>
           <MdOutlineAdd />
-          <input type='text' placeholder='new task...' value={taskTitle} onChange={(e) => setTaskTitle(e.target.value)} autoFocus required />
+          <input type='text' placeholder='new task...'
+            value={taskTitle}
+            onChange={(e) => setTaskTitle(e.target.value)}
+            required />
           {
-            taskTitle ? <button type='submit' className={Styles.btn}>Add</button> : null
+            taskTitle && <button type='submit' className={Styles.btn}>Add</button>
           }
         </form>
       </div>

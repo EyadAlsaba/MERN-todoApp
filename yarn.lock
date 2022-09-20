@@ -1057,9 +1057,9 @@
   "version" "2.0.0"
 
 "jose@^4.1.4", "jose@^4.3.7":
-  "integrity" "sha512-RgaqEOZLkVO+ViN3KkN44XJt9g7+wMveUv59sVLaTxONcUPc8ZpfqOCeLphVBZyih2dgkvZ0Ap1CNcokvY7Uyw=="
-  "resolved" "https://registry.npmjs.org/jose/-/jose-4.9.0.tgz"
-  "version" "4.9.0"
+  "integrity" "sha512-f8E/z+T3Q0kA9txzH2DKvH/ds2uggcw0m3vVPSB9HrSkrQ7mojjifvS7aR8cw+lQl2Fcmx9npwaHpM/M3GD8UQ=="
+  "resolved" "https://registry.npmjs.org/jose/-/jose-4.9.3.tgz"
+  "version" "4.9.3"
 
 "js-tokens@^3.0.0 || ^4.0.0":
   "integrity" "sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ=="
